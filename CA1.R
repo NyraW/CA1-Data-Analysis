@@ -1,12 +1,21 @@
 # Import the World-happiness data frame
 world_happiness_data <- read.csv("World-happiness.csv", na = "")
 
-# Check for missing varaibles. Delete if there are any
-# Examine missing data
+# Check for missing variables and examine missing data
+# List rows with missing values
 incomplete_data <- world_happiness_data[!complete.cases(world_happiness_data),]
 incomplete_data
 
-# Look at the structure of the dataset
+# Remove all missing data using this code
+# Remove any rows that contain NA - listwise deletion
+world_happiness_data <- na.omit(world_happiness_data)
+world_happiness_data
+
+# Check to see if the missing data has been removed
+incomplete_data <- world_happiness_data[!complete.cases(world_happiness_data),]
+incomplete_data
+
+# Look at the structure of the data frame
 str(world_happiness_data)
 
 # Research Question 1 Hypothesis Test
@@ -20,20 +29,10 @@ str(world_happiness_data)
 install.packages("psych")
 library(psych)
 
-pairs.panels(world_happiness_data, 
-             smooth = TRUE, # If TRUE, draws loess smooths  
-             scale = FALSE, # If TRUE, scales the correlation text font  
-             density = TRUE, # If TRUE, adds density plots and histograms  
-             ellipses = TRUE, # If TRUE, draws ellipses   
-             method = "spearman",# Correlation method (also "pearson" or "kendall") 
-             pch = 21, # pch symbol   
-             lm = FALSE, # If TRUE, plots linear fit rather than the LOESS (smoothed) fit 
-             cor = TRUE, # If TRUE, reports correlations
-             jiggle = FALSE, # If TRUE, data points are jittered  
-             factor = 2, # Jittering factor  
-             hist.col = 4, # Histograms color   
-             stars = TRUE,
-             ci = TRUE) # If TRUE, adds confidence intervals
+# Look at the correlation between both variables 
+# Evaluate the strength of the relationship
+# Determine if the relationship is negative or positive
+attach(world_happiness_data)
+plot(Positive.affect, Freedom.to.make.life.choices, pch = 19, col = "red")
 
-# Use the default plot() option to examine correlations between the variables
-pairs(world_happiness_data, labels = colnames(world_happiness_data), main = "World Happiness dataset correlation plot")
+
