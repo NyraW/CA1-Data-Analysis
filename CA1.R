@@ -6,12 +6,11 @@ world_happiness_data <- read.csv("World-happiness.csv", na = "")
 incomplete_data <- world_happiness_data[!complete.cases(world_happiness_data),]
 incomplete_data
 
-# Remove all missing data using this code
 # Remove any rows that contain NA using listwise deletion
 world_happiness_data <- na.omit(world_happiness_data)
 world_happiness_data
 
-# Visualise the data for missing vars
+# Visualise the data for missing variables
 # Check to see if the missing data has been removed by using the VIM package
 # install packages("VIM")
 library(VIM)
@@ -28,11 +27,11 @@ str(world_happiness_data)
 # Positive affect is a numerical variable
 # Freedom to make life choices is a numerical variable
 
-# Install pysch library to look at charts and correlations between variables
+# Use the psych library to look at charts and correlations between variables
 install.packages("psych")
 library(psych)
 
-# Using the default plot() option first to examine correlations between variables and to check linearity
+# Use the default plot() option to examine correlations between variables and to check linearity
 # Evaluate the strength of the relationship
 # Determine if the relationship is negative or positive
 attach(world_happiness_data)
@@ -79,7 +78,6 @@ qqline(world_happiness_data$Freedom.to.make.life.choices, col = 'red')
 
 # Use this code to test for normality using the Shapiro-Wilks test
 # Normality test for the variable positive affect
-
 normality_test <- shapiro.test(world_happiness_data$Positive.affect)
 normality_test$p.value
 
@@ -87,9 +85,7 @@ normality_test$p.value
 # p-value = 1.338313e-17
 # The p-value is lower than 0.05 so the positive affect variable is not normally distributed
 
-# Use this code to test for normality using the Shapiro-Wilks test
 # Normality test for the variable freedom to make life choices
-
 normality_test <- shapiro.test(world_happiness_data$Freedom.to.make.life.choices)
 normality_test$p.value
 
@@ -112,7 +108,6 @@ corr
 
 # The p-value is < 0.05 so we reject H0 and conclude that 
 # Positive affect is affected by freedom to make life choices (p < 2.2e-16)
-# r2 = rho
 
 
 # Research Question 2 Hypothesis Test
@@ -123,9 +118,8 @@ corr
 # Log GDP per capita is a numerical variable
 
 # Use the pysch library to look at charts and correlations between variables
-# Using the default plot() option to examine correlations between variables and to check linearity
+# Use the default plot() option to examine correlations between variables and to check linearity
 # Evaluate the strength of the relationship
-# Determine if the relationship is negative or positive
 attach(world_happiness_data)
 plot(Healthy.life.expectancy.at.birth, 
      Log.GDP.per.capita, 
@@ -151,7 +145,7 @@ hist(Log.GDP.per.capita, col = "blue", main = "Disribution of Log GDP per capita
 par = opar
 
 # Check whether the data is normally distributed or not
-# Quantile-quantile plot allows us to check if the data is distributed normally
+# QQ plots allows us to check if the data is distributed normally
 # Create a normal QQ plot of Healthy Life Expectancy at Birth and Log GDP per capita variables
 # Add the normality line to evaluate normality
 qqnorm(world_happiness_data$Healthy.life.expectancy.at.birth,
@@ -209,9 +203,8 @@ corr
 # Social support is a numerical variable
 
 # Use pysch library to look at charts and correlations between variables
-# Using the default plot() option first to examine correlations between variables and to check linearity
+# Use the default plot() option first to examine correlations between variables and to check linearity
 # Evaluate the strength of the relationship
-# Determine if the relationship is negative or positive
 attach(world_happiness_data)
 plot(Generosity, 
      Social.support, 
@@ -237,7 +230,7 @@ hist(Social.support, col = "blue", main = "Disribution of Social Support")
 par = opar
 
 # Check whether the data is normally distributed or not
-# Quantile-quantile plot allows us to check if the data is distributed normally
+# QQ plots allows us to check if the data is distributed normally
 # Create a normal QQ plot of Generosity and Social Support variables
 # Add the normality line to evaluate normality
 qqnorm(world_happiness_data$Generosity,
@@ -296,7 +289,6 @@ corr
 # Use pysch library to look at charts and correlations between variables
 # Using the default plot() option first to examine correlations between variables and to check linearity
 # Evaluate the strength of the relationship
-# Determine if the relationship is negative or positive
 attach(world_happiness_data)
 plot(Negative.affect, 
      Perceptions.of.corruption, 
@@ -322,7 +314,7 @@ hist(Perceptions.of.corruption, col = "blue", main = "Disribution of Perceptions
 par = opar
 
 # Check whether the data is normally distributed or not
-# Quantile-quantile plot allows us to check if the data is distributed normally
+# QQ plots allows us to check if the data is distributed normally
 # Create a normal QQ plot of Negative affect and Perceptions of corruption variables
 # Add the normality line to evaluate normality
 qqnorm(world_happiness_data$Negative.affect,
@@ -382,7 +374,6 @@ corr
 # use pysch library to look at charts and correlations between variables
 # Using the default plot() option first to examine correlations between variables and to check linearity
 # Evaluate the strength of the relationship
-# Determine if the relationship is negative or positive
 attach(world_happiness_data)
 plot(Life.Ladder, 
      Log.GDP.per.capita, 
@@ -408,7 +399,7 @@ hist(Log.GDP.per.capita, col = "blue", main = "Disribution of Log GDP per capita
 par = opar
 
 # Check whether the data is normally distributed or not
-# Quantile-quantile plot allows us to check if the data is distributed normally
+# QQ plots allows us to check if the data is distributed normally
 # Create a normal QQ plot of Life Ladder and Log GDP per capita variables
 # Add the normality line to evaluate normality
 qqnorm(world_happiness_data$Life.Ladder,
