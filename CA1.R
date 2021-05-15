@@ -60,9 +60,9 @@ par = opar
 
 # Check whether the data is normally distributed or not
 # Quantile-quantile plot allows us to check if the data is distributed normally
-# Compare the quantiles of both samples 
 # Create a normal QQ plot of Positive affect and Freedom to make life choices variables
 # Add the normality line to evaluate normality
+# Compare the quantiles of both samples
 qqnorm(world_happiness_data$Positive.affect,
        main = "Normal QQ plot of Positive Affect data",
        xlab = "Theoretical Quantiles",
