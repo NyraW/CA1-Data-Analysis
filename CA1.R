@@ -1,7 +1,7 @@
 # Import the World-happiness data frame
 world_happiness_data <- read.csv("World-happiness.csv", na = "")
 
-# Check for missing variables and examine missing data
+# Check for missing vars and examine missing data
 # List rows with missing values
 incomplete_data <- world_happiness_data[!complete.cases(world_happiness_data),]
 incomplete_data
